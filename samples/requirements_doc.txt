@@ -1,0 +1,11 @@
+Product Requirements: Billing Portal v2
+
+R1 (P0) Invoice download. Customers must be able to download any invoice from the last 24 months as PDF.
+    Generation must complete in under 5 seconds for invoices up to 200 line items.
+R2 (P0) Payment method management. Customers can add, remove and set a default card. Card data is handled
+    exclusively by Stripe Elements; no PAN data may touch our servers (PCI SAQ-A scope).
+R3 (P1) Usage alerts. Account admins can configure an email alert when monthly usage reaches 80% of plan.
+R4 (P2) Multi-currency display for EUR and GBP. Display only; billing remains in USD.
+R5 (P3) Export of billing history to CSV.
+
+Out of scope: tax calculation, refunds.

@@ -1,0 +1,10 @@
+Sprint planning sync - 14 Oct
+
+Attendees: Priya (PM), Marco (backend), Lena (frontend), Sam (QA)
+
+- Customers keep complaining that they have to log in every single day on mobile. Priya says this came up in 3 support tickets this week. Maybe a "remember me" thing?
+- Reports page is slow. Marco thinks the export to CSV times out for accounts with >50k rows. Nobody knows the exact limit yet.
+- We should probably do something about notifications at some point. Lena mentioned email digests but nothing agreed.
+- Must have SSO via Okta before the Nov 30 contract renewal with Acme Corp (hard deadline, legal confirmed).
+- Sam wants regression tests on the checkout flow before the next release. Low effort, high value.
+- Dark mode - nice to have, someday.

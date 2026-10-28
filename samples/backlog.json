@@ -1,0 +1,9 @@
+[
+  {"id": "BL-101", "title": "Add remember-me checkbox to login", "status": "todo"},
+  {"id": "BL-102", "title": "Keep users signed in on mobile app", "status": "todo"},
+  {"id": "BL-103", "title": "Fix CSV export timeout on large reports", "status": "in_progress", "priority": "High"},
+  {"id": "BL-104", "title": "Export reports to CSV (streamed)", "status": "todo"},
+  {"id": "BL-105", "title": "Upgrade Postgres to 16", "status": "todo", "priority": "Medium"},
+  {"id": "BL-106", "title": "Update team wiki", "status": "todo"},
+  {"id": "BL-107", "title": "Add SAML SSO support", "status": "todo", "priority": "Low"}
+]
