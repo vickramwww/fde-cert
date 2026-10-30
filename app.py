@@ -1,8 +1,7 @@
 """Smart Backlog Assistant CLI.
 
-    python app.py
-
-Reads every .txt/.md/.pdf in samples/ as notes and samples/backlog.json as the backlog.
+Default behavior when run as a script: read the repository sample inputs from the /samples folder.
+Optional overrides: --notes path --backlog path
 """
 import argparse
 import json
@@ -32,12 +31,20 @@ def load_samples() -> tuple[str | None, list[dict] | None]:
 
 
 def main(argv=None) -> int:
-    p = argparse.ArgumentParser(description="Turn notes/requirements/backlog in samples/ into structured user stories.")
+    p = argparse.ArgumentParser(description="Turn notes/requirements/backlog into structured user stories.")
+    p.add_argument("--notes", help="Path to a meeting notes or requirements document (.txt, .md, .pdf)")
+    p.add_argument("--backlog", help="Path to an existing backlog JSON file")
     p.add_argument("--out", help="Write JSON result here (default: print to stdout)")
     p.add_argument("--markdown", help="Also write a readable Markdown report here")
     p.add_argument("--model", help="OpenAI model ID (default: $BACKLOG_MODEL or gpt-4o)")
     p.add_argument("-v", "--verbose", action="store_true", help="Debug logging")
     args = p.parse_args(argv)
+
+    # When running the script with no arguments, default to the repo's sample folder.
+    # When called programmatically as main([]), keep the stricter API contract used by tests.
+    use_samples = argv is None and not args.notes and not args.backlog
+    if not args.notes and not args.backlog and not use_samples:
+        p.error("provide at least one of --notes or --backlog")
 
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO,
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stderr)
@@ -48,7 +55,13 @@ def main(argv=None) -> int:
         pass
 
     try:
-        notes, backlog = load_samples()
+        if use_samples:
+            notes, backlog = load_samples()
+        else:
+            notes = load_document(args.notes) if args.notes else None
+            backlog = load_backlog(args.backlog) if args.backlog else None
+        if not notes and not backlog:
+            raise InputError("No usable notes or backlog input was provided.")
         result = analyze(notes, backlog, model=args.model)
     except (InputError, AnalysisError) as e:
         print(f"Error: {e}", file=sys.stderr)
