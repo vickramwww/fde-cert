@@ -1,0 +1,10 @@
+Weekly operations review - 21 Oct
+
+Attendees: Priya (PM), Devika (support lead), Omar (engineering), Raj (security)
+
+- Support is seeing repeated confusion during first-run onboarding. Customers do not know which steps are required before they can start using the portal.
+- We need an audit log for config changes so internal teams can investigate who changed settings and when.
+- Raj flagged a need for MFA enforcement for admin users before the next security review.
+- Omar mentioned a bug where the search box sometimes returns stale data after an update; not urgent but it is reproducible.
+- We also discussed making the help center easier to navigate for paid customers, but that is a lower priority than the security items.
+- There is a customer request for a "save my filters" option in reporting, but the team has not agreed on scope yet.

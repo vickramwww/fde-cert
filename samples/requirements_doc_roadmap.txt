@@ -1,0 +1,10 @@
+Product roadmap notes: Customer Portal v2
+
+R1 (P0) Admin MFA. Require MFA for all admin login flows.
+R2 (P0) Audit log. Record config changes, user actions, and access events for compliance review.
+R3 (P1) Onboarding improvement. Add a guided checklist and clear setup state for first-time users.
+R4 (P1) Search index refresh. Ensure reported search results reflect the latest data after updates.
+R5 (P2) Saved filters. Users can save and reuse report filters.
+R6 (P3) Help center navigation refresh. Improve discoverability of support documentation.
+
+Non-goals: redesigning the entire portal, third-party analytics migration, automatic refund processing.

@@ -14,12 +14,16 @@ Teams collect ideas in notes, PDFs and informal backlog updates; converting them
 
 ```mermaid
 flowchart LR
-    A[Notes / Requirements<br/>.txt .md .pdf] --> P[parsers.py<br/>load + clean]
-    B[Backlog .json] --> P
-    P --> C[prompt.py<br/>structured prompt]
-    C --> D[analyzer.py<br/>OpenAI call + JSON extract<br/>+ schema validation + retry]
-    D --> E[formatter.py<br/>JSON + Markdown report]
+    A[Input Data\nMeeting notes\nRequirements docs\nBacklog JSON] --> B[Input Parser\nload_document() / load_backlog()]
+    B --> C[Preprocessing\nclean_text()\nnormalize content]
+    C --> D[AI Analysis Engine\nLLM prompt + backlog context]
+    D --> E[Validation\nJSON schema + retry + guardrails]
+    E --> F[Output Formatter\nJSON + Markdown report]
+    F --> G[Structured Backlog\nUser stories\nAcceptance criteria\nPriority / category]
+    G --> H[Human Review\napprove or refine]
 ```
+
+This flow matches the project’s intent in `SPEC.md`: turn noisy source material into a reviewable backlog with clearer priorities, categories, duplicate detection, and open questions.
 
 | File | Role |
 |---|---|

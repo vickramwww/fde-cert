@@ -122,6 +122,7 @@ def analyze(notes: str | None, backlog: list[dict] | None, model: str | None = N
         text = choice.message.content or ""
         try:
             result = validate(extract_json(text))
+            
             warnings = check_unsupported_numbers(result, f"{notes or ''}\n{json.dumps(backlog or [])}")
             for w in warnings:
                 log.warning("Possible invented detail in '%s': %s", w["story"], w["message"])

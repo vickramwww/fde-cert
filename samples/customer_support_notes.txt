@@ -1,0 +1,7 @@
+Customer support triage notes
+
+- Three customers reported that they cannot find the reset-password flow on mobile.
+- A support agent wants the login screen to display "Need help signing in?" more clearly in the footer.
+- One customer asked for the ability to export filtered reports by date range without losing selected columns.
+- Several users have asked for live customer status indicators in the dashboard.
+- Product wants to keep the backlog focused on business-critical fixes before polishing UX details.
